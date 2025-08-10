@@ -197,27 +197,3 @@ class Inventory:
 
 
 __all__ = ["Inventory", "InventoryError", "NegativeStockError", "StockLot"]
-
-
-def _demo() -> None:
-    """Small demonstration used when running this file directly."""
-    inv = Inventory()
-
-    print("-- HREAXS inventory demo --")
-    print("Receiving 10 units of item 1 into warehouse 1 at $5 each...")
-    inv.receive(item_id=1, warehouse_id=1, qty=10, cost_per_unit=5)
-    print("Stock on hand:", inv.stock_on_hand(1, 1))
-
-    print("Issuing 4 units from warehouse 1...")
-    cost, _ = inv.issue(item_id=1, warehouse_id=1, qty=4)
-    print("COGS for issue:", cost)
-    print("Remaining stock:", inv.stock_on_hand(1, 1))
-
-    print("Transferring 3 units from warehouse 1 to warehouse 2...")
-    inv.transfer(item_id=1, from_wh=1, to_wh=2, qty=3)
-    print("Warehouse 1 stock:", inv.stock_on_hand(1, 1))
-    print("Warehouse 2 stock:", inv.stock_on_hand(1, 2))
-
-
-if __name__ == "__main__":  # pragma: no cover - manual testing convenience
-    _demo()
